@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpb7ptebrescm"]
+
+[ext_resource type="Script" uid="uid://b5rvkb6k6o5v2" path="res://camera_pivot.gd" id="1_ig7tw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+size = Vector3(60, 2, 60)
+
+[node name="Main" type="Node"]
+
+[node name="Ground_test_zone" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground_test_zone"]
+transform = Transform3D(60, 0, 0, 0, 2, 0, 0, 0, 60, 0, 0, 0)
+shape = SubResource("BoxShape3D_7dm0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground_test_zone"]
+mesh = SubResource("BoxMesh_ig7tw")
+
+[node name="Camera_pivot" type="Node3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("1_ig7tw")
+
+[node name="Camera3D" type="Camera3D" parent="Camera_pivot"]
+transform = Transform3D(1, 1.776357e-15, 2.980232e-08, -2.1073424e-08, 0.7071068, 0.70710677, -2.1073422e-08, -0.70710677, 0.7071068, 4, 22, 28.999994)
+
+[node name="Marker3D" type="Marker3D" parent="Camera_pivot"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 4, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 37, 26)
+light_energy = 3.848
