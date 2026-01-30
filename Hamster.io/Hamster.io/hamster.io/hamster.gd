@@ -1,7 +1,12 @@
 extends CharacterBody3D
 
-var movement_speed: float = 2.0
-var movement_target_position: Vector3 = Vector3(-3.0,0.0,2.0)
+var movement_speed: float = 5.0
+var movement_target_position: Vector3 = Vector3(0.0,0.0,00.0)
+var food = 50
+var idle = true
+var moving = false
+var closest_seed = null
+var min_distance = INF
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 
@@ -25,11 +30,34 @@ func set_movement_target(movement_target: Vector3):
 	navigation_agent.set_target_position(movement_target)
 
 func _physics_process(_delta):
+	#finding a new path
 	if navigation_agent.is_navigation_finished():
+		idle = true
+		moving = false
+		if food <= 50:
+			closest_seed = null
+			min_distance = INF
+			#Find the closest seed
+			
+			for seed in get_tree().get_nodes_in_group("Seeds"):
+				if seed:
+					var closestseedposition = global_position.distance_to(seed.global_position)
+					if closestseedposition <= min_distance:
+						closest_seed = seed
+		
+		#Move to the closest available seed
+		if closest_seed :
+			set_movement_target(closest_seed.global_position)
+			idle = false
+			moving = true
 		return
-
+	#set the next path 
 	var current_agent_position: Vector3 = global_position
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
-
+	# look to the objective
+	if current_agent_position.distance_to(next_path_position) > 0.01:
+		look_at(next_path_position, Vector3.UP)
+	#calculing the velocity
 	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+
 	move_and_slide()

@@ -9,7 +9,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_24r2x"]
 albedo_color = Color(0.7201275, 0.46066952, 0.27849892, 1)
 
-[node name="Seed" type="Node3D"]
+[node name="Seeds" type="Node3D"]
 script = ExtResource("1_a1cqr")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]

@@ -62,8 +62,8 @@ shape = SubResource("BoxShape3D_ig7tw")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Test cube"]
 mesh = SubResource("BoxMesh_0xm2m")
 
-[node name="Seed" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 7, 0)
+[node name="Seeds" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1.5600438, 0)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34061337, 0)
