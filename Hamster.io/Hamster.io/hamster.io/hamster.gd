@@ -31,25 +31,27 @@ func set_movement_target(movement_target: Vector3):
 
 func _physics_process(_delta):
 	#finding a new path
-	if navigation_agent.is_navigation_finished():
-		idle = true
-		moving = false
-		if food <= 50:
-			closest_seed = null
-			min_distance = INF
-			#Find the closest seed
-			
-			for seed in get_tree().get_nodes_in_group("Seeds"):
-				if seed:
-					var closestseedposition = global_position.distance_to(seed.global_position)
-					if closestseedposition <= min_distance:
-						closest_seed = seed
+
+	idle = true
+	moving = false
+	if food <= 50:
+		closest_seed = null
+		min_distance = INF
+		#Find the closest seed
+		
+		for seed in get_tree().get_nodes_in_group("Seeds"):
+			if seed:
+				var distance_to_seed = global_position.distance_to(seed.global_position)
+				if distance_to_seed <= min_distance:
+					closest_seed = seed
+					min_distance = distance_to_seed
 		
 		#Move to the closest available seed
 		if closest_seed :
 			set_movement_target(closest_seed.global_position)
-			idle = false
-			moving = true
+		idle = false
+		moving = true
+	if navigation_agent.is_navigation_finished():
 		return
 	#set the next path 
 	var current_agent_position: Vector3 = global_position
