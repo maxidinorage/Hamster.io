@@ -16,6 +16,3 @@ shape = SubResource("BoxShape3D_ts32c")
 mesh = SubResource("BoxMesh_s70uv")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 2.88
-path_height_offset = 0.1
-path_max_distance = 9.61
