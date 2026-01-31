@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyryi4td6v4jj"]
+
+[ext_resource type="Script" uid="uid://b5rvkb6k6o5v2" path="res://camera_pivot.gd" id="1_u5kg4"]
+
+[node name="Camera_pivot" type="Node3D"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+script = ExtResource("1_u5kg4")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 7.993607e-15, 2.9802322e-08, -2.1073427e-08, 0.7071069, 0.7071067, -2.1073422e-08, -0.7071067, 0.7071069, 3.9999995, 15.050133, 28.99999)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 3.3897147, 0)

@@ -16,3 +16,5 @@ shape = SubResource("BoxShape3D_ts32c")
 mesh = SubResource("BoxMesh_s70uv")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+use_3d_avoidance = true
